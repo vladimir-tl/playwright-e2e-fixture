@@ -17,7 +17,11 @@ test('create order through UI with fixture', async ({ context, auth }) => {
   await expect(page.getByTestId('orderSuccessfullyCreated-popup-ok-button')).toBeVisible()
 })
 
-test('search for an existing order created through API with fixture', async ({ context, auth, orderId }) => {
+test('search for an existing order created through API with fixture', async ({
+  context,
+  auth,
+  orderId,
+}) => {
   // Set JWT in localStorage
   await context.addInitScript((token) => {
     localStorage.setItem('jwt', token)
