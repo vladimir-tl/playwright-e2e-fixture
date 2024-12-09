@@ -37,7 +37,6 @@ export const test = base.extend<Fixtures>({
   },
 
   mainPage: async ({ context, auth }, use) => {
-
     // Set JWT in localStorage
     await context.addInitScript((token) => {
       localStorage.setItem('jwt', token)
@@ -45,7 +44,7 @@ export const test = base.extend<Fixtures>({
 
     const mainPage = await context.newPage()
 
-    await mainPage.route(`${BASE_API}${orderPath}/*`, route =>
+    await mainPage.route(`${BASE_API}${orderPath}/*`, (route) =>
       route.fulfill({
         status: 200,
         contentType: 'application/json',
@@ -57,11 +56,11 @@ export const test = base.extend<Fixtures>({
           comment: '',
           id: 9999,
         }),
-      })
-    );
+      }),
+    )
 
     await mainPage.goto(SERVICE_URL)
-    await use(mainPage);
+    await use(mainPage)
   },
 })
 

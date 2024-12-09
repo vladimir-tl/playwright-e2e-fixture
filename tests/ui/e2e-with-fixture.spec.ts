@@ -36,9 +36,7 @@ test('search for an existing order created through API with fixture', async ({
   await expect(page.getByText('OPEN')).toBeVisible()
 })
 
-test.only('search for order with delivered status using mock fixture', async ({
-  mainPage,
-}) => {
+test.only('search for order with delivered status using mock fixture', async ({ mainPage }) => {
   // Search for the created order through the UI
   await mainPage.getByTestId('openStatusPopup-button').click()
   await mainPage.getByTestId('searchOrder-input').fill('9999')
